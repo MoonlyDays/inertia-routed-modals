@@ -1,0 +1,29 @@
+{
+  "name": "inertia-routed-modals-react",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "type": "module",
+  "author": "Daniel Basiuc-Brinzei",
+  "license": "ISC",
+  "description": "",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    }
+  },
+  "dependencies": {
+    "@inertiajs/react": "^2.0.0",
+    "react": "^19.0.0"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.17.1",
+    "@types/react": "^19.0.1",
+    "typescript": "^5.7.2"
+  }
+}
