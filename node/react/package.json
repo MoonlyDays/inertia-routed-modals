@@ -1,7 +1,8 @@
 {
     "name": "inertia-routed-modals-react",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "main": "dist/index.js",
+    "types": "dist/index.d.ts",
     "type": "module",
     "author": "Daniel Basiuc-Brinzei",
     "license": "ISC",
