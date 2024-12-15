@@ -9,7 +9,7 @@ type ClientModalProps = PropsWithChildren<{
 
 export function ClientModal({open, onClose, children}: ClientModalProps) {
     const ctx = useContext(RoutedModalsContext);
-    const instance = useRef<ModalInstance>(undefined);
+    const instance = useRef<ModalInstance>();
 
     const handleOpen = () => {
         instance.current = {

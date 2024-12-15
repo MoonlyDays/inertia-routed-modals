@@ -16,7 +16,7 @@ type RoutedModalsProviderProps = PropsWithChildren<{
 
 export function RoutedModalsProvider({resolve, children}: RoutedModalsProviderProps) {
     const [modals, setModals] = useState<ModalState[]>([]);
-    const backendModal = useRef<ModalState>(undefined);
+    const backendModal = useRef<ModalState>();
 
     const resolveComponent: ModalResolver = useMemo(
         () => async (component: string) => {
