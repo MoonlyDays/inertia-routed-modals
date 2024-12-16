@@ -17,6 +17,8 @@ class InertiaRoutedModalsServiceProvider extends PackageServiceProvider
 
     public function bootingPackage(): void
     {
+        app('router')->pushMiddlewareToGroup('web', Middleware::class);
+
         ResponseFactory::macro(
             'modal',
             fn (string $component, array|Arrayable $props = []) => new Modal($component, $props)

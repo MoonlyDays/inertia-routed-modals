@@ -22,13 +22,36 @@ Install the npm package using:
 npm install vendor/moonlydays/inertia-routed-modals/node/react
 ```
 
+## Usage
 
-Inside your `app.tsx` wrap the App component with RoutedModalsProvider component.
+### Backend
 
-```js
+It all starts with a route. Inside your controller create an action that will return the modal using the new
+`Inertia::modal` method. As the first argument provide the modal component name (relative to Modals folder). As the
+second optional argument, provide an array of props that have to be passed to the modal
+
+```php
+public function action()
+{
+    return Inertia::modal("Component", [
+        "prop" => "value",
+        "other" => "value"
+    ]);
+}
+```
+
+### Frontend
+
+Inside your `app.tsx` wrap the App component with RoutedModalsProvider component. Use may the same function
+`resolvePageComponent` that use
+used to resolve Inertia pages to resolve modal components.
+
+```jsx
+import {RoutedModalsProvider} from "./RoutedModalsProvider";
+
 createInertiaApp({
     // ...
-    setup({ el, App, props }) {
+    setup({el, App, props}) {
         const root = createRoot(el);
 
         root.render(
@@ -47,19 +70,41 @@ createInertiaApp({
 })
 ```
 
-## Usage
+Next you have to specify where the Modal components will be mounted in your layout. Use `<ModalPortal />` somewhere
+in the root of your page layout to set that.
 
-Return the modal from the controller as you would normally return an Inertia page.
+```jsx
+import {ModalPortal} from "./ModalPortal";
 
-```php
-public function action()
-{
-    return Inertia::modal("Component", [
-        "prop" => "value",
-        "other" => "value"
-    ]);
+export function MainLayout({children}) {
+
+    return (
+        <div className="bg-black">
+            {children}
+            <ModalPortal/>
+        </div>
+    );
+
 }
 ```
+
+Create a new folder `resources/js/Modals` and create a new modal component the same way you create Inertia
+pages. The modal components are headless, meaning they are mounted to the DOM without any overhead elements. This is an
+example MyModal component:
+
+```jsx
+// resources/js/Modals/MyModal.tsx
+export default function MyModal() {
+    return (
+        <div className="absolute w-full h-full bg-black/50 z-50 flex items-center justify-center">
+            <div>This is a cool looking Modal!</div>
+        </div>
+    );
+}
+```
+
+Now to open that modal, create a `<Link ... />` somewhere in your app that leads to your route that returns a modal.
+When that Link will be clicked your modal will be opened.
 
 ## Testing
 
