@@ -35,7 +35,7 @@ class HandleInertiaRequests extends Middleware
     {
         return [
             ...parent::share($request),
-+           ...$this->shareModal(), // add this
+            ...$this->shareModal(), // add this
             // ...
         ];
     }
