@@ -22,6 +22,27 @@ Install the npm package using:
 npm install vendor/moonlydays/inertia-routed-modals/node/react
 ```
 
+Inside the `HandleInertiaRequest` middleware in your app, add the following:
+
+```php
+use MoonlyDays\InertiaRoutedModals\SharesRoutedModals;
+
+class HandleInertiaRequests extends Middleware
+{
+    use SharesRoutedModals; // add this
+
+    public function share(Request $request): array
+    {
+        return [
+            ...parent::share($request),
++           ...$this->shareModal(), // add this
+            // ...
+        ];
+    }
+}
+
+```
+
 ## Usage
 
 ### Backend
