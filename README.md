@@ -27,8 +27,8 @@ npm install vendor/moonlydays/inertia-routed-modals/node/react
 ### Backend
 
 It all starts with a route. Inside your controller create an action that will return the modal using the new
-`Inertia::modal` method. As the first argument provide the modal component name (relative to Modals folder). As the
-second optional argument, provide an array of props that have to be passed to the modal
+`Inertia::modal` method. The first argument is the modal component name (relative to Modals folder). The
+second optional argument is an array of props that have to be passed to the modal.
 
 ```php
 public function action()
@@ -88,7 +88,7 @@ export function MainLayout({children}) {
 }
 ```
 
-Create a new folder `resources/js/Modals` and create a new modal component the same way you create Inertia
+Create a new `resources/js/Modals` folder and create a new modal component the same way you create Inertia
 pages. The modal components are headless, meaning they are mounted to the DOM without any overhead elements. This is an
 example MyModal component:
 
