@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import {ReactNode} from 'react';
 
 export type ModalComponent = (props: unknown) => ReactNode;
 export type ComponentResolver = (component: string) => Promise<unknown>;
@@ -19,8 +19,13 @@ export interface ModalInstance {
     local: boolean;
 }
 
-export type ModalProps = {
-    component: string;
+export type PartialModalProps = {
     nonce: string;
+}
+
+export type FullModalProps = PartialModalProps & {
+    component: string;
     props: Record<string, unknown>;
-};
+}
+
+export type ModalProps = PartialModalProps | FullModalProps;

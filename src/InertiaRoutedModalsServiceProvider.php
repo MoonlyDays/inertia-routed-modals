@@ -27,7 +27,7 @@ class InertiaRoutedModalsServiceProvider extends PackageServiceProvider
             function () {
                 /** @var $this RedirectResponse */
                 $this->getSession()->flash('_modal', [
-                    '_nonce' => request()->header('X-Inertia-Modal-Nonce'),
+                    'nonce' => request()->header('X-Inertia-Modal-Nonce'),
                 ]);
 
                 return $this;
