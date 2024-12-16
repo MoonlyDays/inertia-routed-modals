@@ -32,12 +32,12 @@
     },
     "autoload": {
         "psr-4": {
-            "MoonlyDays\\InertiaRoutedModals\\": "src/",
+            "MoonlyDays\\InertiaRoutedModals\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "MoonlyDays\\InertiaRoutedModals\\Tests\\": "tests/",
+            "MoonlyDays\\InertiaRoutedModals\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -59,7 +59,7 @@
         "laravel": {
             "providers": [
                 "MoonlyDays\\InertiaRoutedModals\\InertiaRoutedModalsServiceProvider"
-            ],
+            ]
         }
     },
     "minimum-stability": "dev",
