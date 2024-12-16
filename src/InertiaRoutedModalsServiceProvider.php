@@ -21,7 +21,7 @@ class InertiaRoutedModalsServiceProvider extends PackageServiceProvider
 
         ResponseFactory::macro(
             'modal',
-            fn(string $component, array|Arrayable $props = []) => new Modal($component, $props)
+            fn (string $component, array|Arrayable $props = []) => new Modal($component, $props)
         );
 
         RedirectResponse::macro(
