@@ -21,15 +21,15 @@ class InertiaRoutedModalsServiceProvider extends PackageServiceProvider
 
         ResponseFactory::macro(
             'modal',
-            fn (string $component, array|Arrayable $props = []) => new Modal($component, $props)
+            fn(string $component, array|Arrayable $props = []) => new Modal($component, $props)
         );
 
         RedirectResponse::macro(
             'withoutModalClosing',
             function () {
                 /** @var $this RedirectResponse */
-                $this->getSession()->flash('_modal', [
-                    'nonce' => request()->header('X-Inertia-Modal-Nonce'),
+                $this->getSession()->flash(Modal::SESSION_KEY, [
+                    'nonce' => request()->header(Modal::HEADER_NONCE),
                 ]);
 
                 return $this;

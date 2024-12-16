@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 class Modal implements Arrayable, Responsable
 {
     public const SESSION_KEY = '_modal';
+    public const HEADER_NONCE = "X-Inertia-Modal-Nonce";
 
     protected string $baseUrl = '/';
 
