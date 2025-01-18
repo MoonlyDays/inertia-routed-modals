@@ -23,7 +23,7 @@ class InertiaRoutedModalsServiceProvider extends PackageServiceProvider
         );
 
         RedirectResponse::macro(
-            'withoutModalClosing',
+            'persistModal',
             function () {
                 /** @var $this RedirectResponse */
                 $this->getSession()->flash(Modal::SESSION_KEY, [

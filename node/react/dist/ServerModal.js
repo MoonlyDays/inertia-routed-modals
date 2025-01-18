@@ -7,7 +7,10 @@ export function ServerModal() {
     const { modal } = usePage().props;
     const instance = useRef();
     const closeModal = () => {
-        ctx.closeAll();
+        if (!instance.current) {
+            return;
+        }
+        ctx.closeModal(instance.current);
     };
     const openModal = (modal) => {
         ctx.resolveComponent(modal.component).then((Node) => {

@@ -9,7 +9,11 @@ export function ServerModal() {
     const instance = useRef<ModalInstance>();
 
     const closeModal = () => {
-        ctx.closeAll();
+        if (!instance.current) {
+            return;
+        }
+
+        ctx.closeModal(instance.current);
     };
 
     const openModal = (modal: FullModalProps) => {
