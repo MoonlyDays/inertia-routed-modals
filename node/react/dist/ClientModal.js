@@ -28,5 +28,8 @@ export function ClientModal({ open, onClose, children }) {
             handleClose();
         }
     }, [open]);
+    useEffect(() => {
+        return handleClose();
+    }, []);
     return null;
 }
