@@ -1,6 +1,6 @@
 import {useContext, useEffect, useRef} from 'react';
 import {usePage} from '@inertiajs/react';
-import {FullModalProps, ModalInstance, ModalProps} from '../types';
+import {FullModalProps, ModalInstance, ModalProps} from './Types';
 import {RoutedModalsContext} from './RoutedModalsContext';
 
 export function ServerModal() {

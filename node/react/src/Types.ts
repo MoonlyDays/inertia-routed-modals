@@ -5,13 +5,13 @@ export type ComponentResolver = (component: string) => Promise<unknown>;
 export type ModalResolver = (component: string) => Promise<ModalComponent>;
 export type ModalAction = () => void;
 
-export interface ModalState {
+export type  ModalState = {
     instance: ModalInstance;
     open: boolean;
     onClose: ModalAction;
 }
 
-export interface ModalInstance {
+export type ModalInstance = {
     component: string;
     props: Record<string, unknown>;
     nonce: string;

@@ -7,7 +7,7 @@ import {
     ModalInstance,
     ModalResolver,
     ModalState,
-} from '../types';
+} from './Types';
 import {router} from '@inertiajs/react';
 
 type RoutedModalsProviderProps = PropsWithChildren<{

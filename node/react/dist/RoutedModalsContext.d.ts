@@ -1,4 +1,4 @@
-import { ModalAction, ModalInstance, ModalResolver, ModalState } from '../types';
+import { ModalAction, ModalInstance, ModalResolver, ModalState } from './Types';
 type RoutedModalsContextProps = {
     resolveComponent: ModalResolver;
     modals: ModalState[];

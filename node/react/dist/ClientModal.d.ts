@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { ModalAction } from '../types';
+import { ModalAction } from "./Types";
 type ClientModalProps = PropsWithChildren<{
     open: boolean;
     onClose: ModalAction;

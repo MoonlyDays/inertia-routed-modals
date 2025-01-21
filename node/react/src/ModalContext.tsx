@@ -1,5 +1,5 @@
 import {createContext, type ReactNode} from 'react';
-import {ModalAction} from '../types';
+import {ModalAction} from './Types';
 
 type ModalContextProps = {
     open: boolean;

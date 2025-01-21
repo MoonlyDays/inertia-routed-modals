@@ -1,13 +1,13 @@
-import { PropsWithChildren, useContext, useEffect, useRef } from 'react';
-import { RoutedModalsContext } from './RoutedModalsContext';
-import { ModalAction, ModalInstance } from '../types';
+import {PropsWithChildren, useContext, useEffect, useRef} from 'react';
+import {RoutedModalsContext} from './RoutedModalsContext';
+import {ModalAction, ModalInstance} from "./Types";
 
 type ClientModalProps = PropsWithChildren<{
     open: boolean;
     onClose: ModalAction;
 }>;
 
-export function ClientModal({ open, onClose, children }: ClientModalProps) {
+export function ClientModal({open, onClose, children}: ClientModalProps) {
     const ctx = useContext(RoutedModalsContext);
     const instance = useRef<ModalInstance>();
 

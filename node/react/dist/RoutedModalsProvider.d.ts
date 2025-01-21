@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { ComponentResolver } from '../types';
+import { ComponentResolver } from './Types';
 type RoutedModalsProviderProps = PropsWithChildren<{
     resolve: ComponentResolver;
 }>;

@@ -1,7 +1,7 @@
 export declare function useModal(): {
     open: boolean;
     local: boolean;
-    close: import("../types").ModalAction;
+    close: import("./Types").ModalAction;
     component: string;
     node: import("react").ReactNode;
     nonce: string;

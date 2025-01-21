@@ -10,11 +10,9 @@
         "esModuleInterop": true,
         "resolveJsonModule": true,
         "forceConsistentCasingInFileNames": true,
-        /* If transpiling with TypeScript: */
         "module": "ESNext",
         "outDir": "./dist",
         "rootDir": "./src",
-        /* AND if you're building for a library: */
-        "declaration": true
+        "declaration": true,
     }
 }

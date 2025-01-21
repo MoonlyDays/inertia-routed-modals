@@ -4,7 +4,7 @@ import {
     ModalInstance,
     ModalResolver,
     ModalState,
-} from '../types';
+} from './Types';
 
 type RoutedModalsContextProps = {
     resolveComponent: ModalResolver;
