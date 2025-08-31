@@ -1,16 +1,18 @@
-import {PropsWithChildren, ReactNode, useContext} from 'react';
-import {RoutedModalsContext} from './RoutedModalsContext';
-import {ModalContext} from './ModalContext';
-import {ServerModal} from './ServerModal';
+import { PropsWithChildren, ReactNode } from "react";
+import { useRoutedModalsProvider } from "./routed-modals-context";
+import { ModalContext } from "./modal-context";
+import { ServerModal } from "./server-modal";
 
-export function ModalPortal({layout: Layout}: {
-    layout?: (props: PropsWithChildren) => ReactNode
+export function ModalPortal({
+    layout: Layout,
+}: {
+    layout?: (props: PropsWithChildren) => ReactNode;
 }) {
-    const ctx = useContext(RoutedModalsContext);
+    const ctx = useRoutedModalsProvider();
 
     return (
         <>
-            <ServerModal/>
+            <ServerModal />
             {ctx.modals.map((modal) => {
                 let node = modal.instance.node;
                 if (Layout) {

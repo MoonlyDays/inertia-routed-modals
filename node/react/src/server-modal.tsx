@@ -1,12 +1,12 @@
-import {useContext, useEffect, useRef} from 'react';
-import {usePage} from '@inertiajs/react';
-import {FullModalProps, ModalInstance, ModalProps} from './Types';
-import {RoutedModalsContext} from './RoutedModalsContext';
+import { useEffect, useRef } from "react";
+import { usePage } from "@inertiajs/react";
+import { FullModalProps, ModalInstance, ModalProps } from "./types";
+import { useRoutedModalsProvider } from "./routed-modals-context";
 
 export function ServerModal() {
-    const ctx = useContext(RoutedModalsContext);
-    const {modal} = usePage<{ modal?: ModalProps }>().props;
-    const instance = useRef<ModalInstance>();
+    const ctx = useRoutedModalsProvider();
+    const { modal } = usePage<{ modal?: ModalProps }>().props;
+    const instance = useRef<ModalInstance>(undefined);
 
     const closeModal = () => {
         if (!instance.current) {
@@ -18,13 +18,15 @@ export function ServerModal() {
 
     const openModal = (modal: FullModalProps) => {
         ctx.resolveComponent(modal.component).then((Node) => {
-            ctx.openModal(instance.current = {
-                nonce: modal.nonce,
-                component: modal.component,
-                node: <Node {...modal.props} />,
-                props: modal.props,
-                local: false,
-            });
+            ctx.openModal(
+                (instance.current = {
+                    nonce: modal.nonce,
+                    component: modal.component,
+                    node: <Node {...modal.props} />,
+                    props: modal.props,
+                    local: false,
+                }),
+            );
         });
     };
 
@@ -51,7 +53,9 @@ export function ServerModal() {
 
         // We have been given a persist prop, we can't open a modal just from this.
         if (!("component" in modal)) {
-            throw Error('Backend responded to keep the modal, but there is no modal to keep.');
+            throw Error(
+                "Backend responded to keep the modal, but there is no modal to keep.",
+            );
         }
 
         openModal(modal);

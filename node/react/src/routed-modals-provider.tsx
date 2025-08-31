@@ -1,5 +1,5 @@
-import {RoutedModalsContext} from './RoutedModalsContext';
-import {PropsWithChildren, useEffect, useMemo, useRef, useState} from 'react';
+import { RoutedModalsContext } from "./routed-modals-context";
+import { PropsWithChildren, useEffect, useMemo, useRef, useState } from "react";
 import {
     ComponentResolver,
     ModalAction,
@@ -7,16 +7,19 @@ import {
     ModalInstance,
     ModalResolver,
     ModalState,
-} from './Types';
-import {router} from '@inertiajs/react';
+} from "./types";
+import { router } from "@inertiajs/react";
 
 type RoutedModalsProviderProps = PropsWithChildren<{
     resolve: ComponentResolver;
 }>;
 
-export function RoutedModalsProvider({resolve, children}: RoutedModalsProviderProps) {
+export function RoutedModalsProvider({
+    resolve,
+    children,
+}: RoutedModalsProviderProps) {
     const [modals, setModals] = useState<ModalState[]>([]);
-    const backendModal = useRef<ModalState>();
+    const backendModal = useRef<ModalState>(undefined);
 
     const resolveComponent: ModalResolver = useMemo(
         () => async (component: string) => {
@@ -37,9 +40,9 @@ export function RoutedModalsProvider({resolve, children}: RoutedModalsProviderPr
             modals.map((other) =>
                 other.instance.nonce == modal.nonce
                     ? {
-                        ...other,
-                        open: false,
-                    }
+                          ...other,
+                          open: false,
+                      }
                     : other,
             ),
         );
@@ -62,19 +65,19 @@ export function RoutedModalsProvider({resolve, children}: RoutedModalsProviderPr
 
     const closeAll = () => {
         setModals((modals) =>
-            modals.map((modal) => ({...modal, open: false})),
+            modals.map((modal) => ({ ...modal, open: false })),
         );
     };
 
     useEffect(() => {
-        router.on('before', (event) => {
+        router.on("before", (event) => {
             const modal = backendModal.current?.instance;
             if (!modal) {
                 return;
             }
 
             event.detail.visit.headers = {
-                'X-Inertia-Modal-Nonce': modal.nonce,
+                "X-Inertia-Modal-Nonce": modal.nonce,
                 ...event.detail.visit.headers,
             };
         });
