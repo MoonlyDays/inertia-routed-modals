@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
 export type ModalComponent = (props: unknown) => ReactNode;
 export type ComponentResolver = (component: string) => Promise<unknown>;
 export type ModalResolver = (component: string) => Promise<ModalComponent>;
